@@ -31,11 +31,11 @@ export class AirDropToken__Params {
     return this._event.parameters[1].value.toAddress();
   }
 
-  get _amount(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
+  get _to(): Address {
+    return this._event.parameters[2].value.toAddress();
   }
 
-  get _ownersAirdropFees(): BigInt {
+  get _amount(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
 }
@@ -161,7 +161,7 @@ export class CreateDaoErc20__Params {
     return this._event.parameters[14].value.toAddress();
   }
 
-  get _isGovernanceActive(): boolean {
+  get isGovernanceActive(): boolean {
     return this._event.parameters[15].value.toBoolean();
   }
 
@@ -203,48 +203,60 @@ export class CreateDaoErc721__Params {
     return this._event.parameters[3].value.toString();
   }
 
-  get pricePerToken(): BigInt {
-    return this._event.parameters[4].value.toBigInt();
+  get tokenURI(): string {
+    return this._event.parameters[4].value.toString();
   }
 
-  get distributionAmount(): BigInt {
+  get pricePerToken(): BigInt {
     return this._event.parameters[5].value.toBigInt();
   }
 
-  get maxTokensPerUser(): BigInt {
+  get distributionAmount(): BigInt {
     return this._event.parameters[6].value.toBigInt();
   }
 
-  get ownerFee(): BigInt {
+  get maxTokensPerUser(): BigInt {
     return this._event.parameters[7].value.toBigInt();
   }
 
-  get _days(): BigInt {
+  get ownerFee(): BigInt {
     return this._event.parameters[8].value.toBigInt();
   }
 
-  get quorum(): BigInt {
+  get _days(): BigInt {
     return this._event.parameters[9].value.toBigInt();
   }
 
-  get threshold(): BigInt {
+  get quorum(): BigInt {
     return this._event.parameters[10].value.toBigInt();
   }
 
-  get depositTokenAddress(): Address {
-    return this._event.parameters[11].value.toAddress();
+  get threshold(): BigInt {
+    return this._event.parameters[11].value.toBigInt();
   }
 
-  get emitter(): Address {
+  get depositTokenAddress(): Address {
     return this._event.parameters[12].value.toAddress();
   }
 
-  get gnosisAddress(): Address {
+  get emitter(): Address {
     return this._event.parameters[13].value.toAddress();
   }
 
+  get gnosisAddress(): Address {
+    return this._event.parameters[14].value.toAddress();
+  }
+
+  get isGovernanceActive(): boolean {
+    return this._event.parameters[15].value.toBoolean();
+  }
+
+  get isTransferable(): boolean {
+    return this._event.parameters[16].value.toBoolean();
+  }
+
   get assetsStoredOnGnosis(): boolean {
-    return this._event.parameters[14].value.toBoolean();
+    return this._event.parameters[17].value.toBoolean();
   }
 }
 
@@ -722,28 +734,6 @@ export class UpdateMinMaxDeposit__Params {
   }
 }
 
-export class UpdateNftTransferability extends ethereum.Event {
-  get params(): UpdateNftTransferability__Params {
-    return new UpdateNftTransferability__Params(this);
-  }
-}
-
-export class UpdateNftTransferability__Params {
-  _event: UpdateNftTransferability;
-
-  constructor(event: UpdateNftTransferability) {
-    this._event = event;
-  }
-
-  get _daoAddress(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get _isNftTransferable(): boolean {
-    return this._event.parameters[1].value.toBoolean();
-  }
-}
-
 export class UpdateOwnerFee extends ethereum.Event {
   get params(): UpdateOwnerFee__Params {
     return new UpdateOwnerFee__Params(this);
@@ -785,6 +775,28 @@ export class UpdatePricePerToken__Params {
 
   get _amount(): BigInt {
     return this._event.parameters[1].value.toBigInt();
+  }
+}
+
+export class UpdateTokenTransferability extends ethereum.Event {
+  get params(): UpdateTokenTransferability__Params {
+    return new UpdateTokenTransferability__Params(this);
+  }
+}
+
+export class UpdateTokenTransferability__Params {
+  _event: UpdateTokenTransferability;
+
+  constructor(event: UpdateTokenTransferability) {
+    this._event = event;
+  }
+
+  get _daoAddress(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
+  get _isTokenTransferable(): boolean {
+    return this._event.parameters[1].value.toBoolean();
   }
 }
 
@@ -1000,11 +1012,11 @@ export class AirDropTokenCall__Inputs {
     return this._call.inputValues[1].value.toAddress();
   }
 
-  get _amount(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
+  get _to(): Address {
+    return this._call.inputValues[2].value.toAddress();
   }
 
-  get _ownersAirdropFees(): BigInt {
+  get _amount(): BigInt {
     return this._call.inputValues[3].value.toBigInt();
   }
 }
@@ -1013,6 +1025,36 @@ export class AirDropTokenCall__Outputs {
   _call: AirDropTokenCall;
 
   constructor(call: AirDropTokenCall) {
+    this._call = call;
+  }
+}
+
+export class AllowActionContractCall extends ethereum.Call {
+  get inputs(): AllowActionContractCall__Inputs {
+    return new AllowActionContractCall__Inputs(this);
+  }
+
+  get outputs(): AllowActionContractCall__Outputs {
+    return new AllowActionContractCall__Outputs(this);
+  }
+}
+
+export class AllowActionContractCall__Inputs {
+  _call: AllowActionContractCall;
+
+  constructor(call: AllowActionContractCall) {
+    this._call = call;
+  }
+
+  get _actionContract(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class AllowActionContractCall__Outputs {
+  _call: AllowActionContractCall;
+
+  constructor(call: AllowActionContractCall) {
     this._call = call;
   }
 }
@@ -1250,48 +1292,60 @@ export class CreateDaoErc721Call__Inputs {
     return this._call.inputValues[3].value.toString();
   }
 
-  get _pricePerToken(): BigInt {
-    return this._call.inputValues[4].value.toBigInt();
+  get _tokenURI(): string {
+    return this._call.inputValues[4].value.toString();
   }
 
-  get _distributionAmount(): BigInt {
+  get _pricePerToken(): BigInt {
     return this._call.inputValues[5].value.toBigInt();
   }
 
-  get _maxTokensPerUser(): BigInt {
+  get _distributionAmount(): BigInt {
     return this._call.inputValues[6].value.toBigInt();
   }
 
-  get _ownerFee(): BigInt {
+  get _maxTokensPerUser(): BigInt {
     return this._call.inputValues[7].value.toBigInt();
   }
 
-  get _totalDays(): BigInt {
+  get _ownerFee(): BigInt {
     return this._call.inputValues[8].value.toBigInt();
   }
 
-  get _quorum(): BigInt {
+  get _totalDays(): BigInt {
     return this._call.inputValues[9].value.toBigInt();
   }
 
-  get _threshold(): BigInt {
+  get _quorum(): BigInt {
     return this._call.inputValues[10].value.toBigInt();
   }
 
-  get _emitter(): Address {
-    return this._call.inputValues[11].value.toAddress();
-  }
-
-  get _gnosisAddress(): Address {
-    return this._call.inputValues[12].value.toAddress();
+  get _threshold(): BigInt {
+    return this._call.inputValues[11].value.toBigInt();
   }
 
   get _depositTokenAddress(): Address {
+    return this._call.inputValues[12].value.toAddress();
+  }
+
+  get _emitter(): Address {
     return this._call.inputValues[13].value.toAddress();
   }
 
+  get _gnosisAddress(): Address {
+    return this._call.inputValues[14].value.toAddress();
+  }
+
+  get _isGovernanceActive(): boolean {
+    return this._call.inputValues[15].value.toBoolean();
+  }
+
+  get isTransferable(): boolean {
+    return this._call.inputValues[16].value.toBoolean();
+  }
+
   get assetsStoredOnGnosis(): boolean {
-    return this._call.inputValues[14].value.toBoolean();
+    return this._call.inputValues[17].value.toBoolean();
   }
 }
 
@@ -1931,40 +1985,6 @@ export class UpdateMinMaxDepositCall__Outputs {
   }
 }
 
-export class UpdateNftTransferabilityCall extends ethereum.Call {
-  get inputs(): UpdateNftTransferabilityCall__Inputs {
-    return new UpdateNftTransferabilityCall__Inputs(this);
-  }
-
-  get outputs(): UpdateNftTransferabilityCall__Outputs {
-    return new UpdateNftTransferabilityCall__Outputs(this);
-  }
-}
-
-export class UpdateNftTransferabilityCall__Inputs {
-  _call: UpdateNftTransferabilityCall;
-
-  constructor(call: UpdateNftTransferabilityCall) {
-    this._call = call;
-  }
-
-  get _nftAddress(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get _isNftTransferable(): boolean {
-    return this._call.inputValues[1].value.toBoolean();
-  }
-}
-
-export class UpdateNftTransferabilityCall__Outputs {
-  _call: UpdateNftTransferabilityCall;
-
-  constructor(call: UpdateNftTransferabilityCall) {
-    this._call = call;
-  }
-}
-
 export class UpdateOwnerFeeCall extends ethereum.Call {
   get inputs(): UpdateOwnerFeeCall__Inputs {
     return new UpdateOwnerFeeCall__Inputs(this);
@@ -2029,6 +2049,40 @@ export class UpdatePricePerTokenCall__Outputs {
   _call: UpdatePricePerTokenCall;
 
   constructor(call: UpdatePricePerTokenCall) {
+    this._call = call;
+  }
+}
+
+export class UpdateTokenTransferabilityCall extends ethereum.Call {
+  get inputs(): UpdateTokenTransferabilityCall__Inputs {
+    return new UpdateTokenTransferabilityCall__Inputs(this);
+  }
+
+  get outputs(): UpdateTokenTransferabilityCall__Outputs {
+    return new UpdateTokenTransferabilityCall__Outputs(this);
+  }
+}
+
+export class UpdateTokenTransferabilityCall__Inputs {
+  _call: UpdateTokenTransferabilityCall;
+
+  constructor(call: UpdateTokenTransferabilityCall) {
+    this._call = call;
+  }
+
+  get _nftAddress(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+
+  get _isTokenTransferable(): boolean {
+    return this._call.inputValues[1].value.toBoolean();
+  }
+}
+
+export class UpdateTokenTransferabilityCall__Outputs {
+  _call: UpdateTokenTransferabilityCall;
+
+  constructor(call: UpdateTokenTransferabilityCall) {
     this._call = call;
   }
 }

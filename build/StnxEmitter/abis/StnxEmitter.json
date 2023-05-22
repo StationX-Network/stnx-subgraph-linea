@@ -16,14 +16,14 @@
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "_ownersAirdropFees",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
@@ -170,7 +170,7 @@
       {
         "indexed": false,
         "internalType": "bool",
-        "name": "_isGovernanceActive",
+        "name": "isGovernanceActive",
         "type": "bool"
       },
       {
@@ -214,6 +214,12 @@
         "indexed": false,
         "internalType": "string",
         "name": "symbol",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "tokenURI",
         "type": "string"
       },
       {
@@ -275,6 +281,18 @@
         "internalType": "address",
         "name": "gnosisAddress",
         "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isGovernanceActive",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isTransferable",
+        "type": "bool"
       },
       {
         "indexed": false,
@@ -765,25 +783,6 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "_daoAddress",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "_isNftTransferable",
-        "type": "bool"
-      }
-    ],
-    "name": "UpdateNftTransferability",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
         "name": "_proxy",
         "type": "address"
       },
@@ -814,6 +813,25 @@
       }
     ],
     "name": "UpdatePricePerToken",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_daoAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "_isTokenTransferable",
+        "type": "bool"
+      }
+    ],
+    "name": "UpdateTokenTransferability",
     "type": "event"
   },
   {
@@ -906,17 +924,30 @@
         "type": "address"
       },
       {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_ownersAirdropFees",
+        "name": "_amount",
         "type": "uint256"
       }
     ],
     "name": "airDropToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_actionContract",
+        "type": "address"
+      }
+    ],
+    "name": "allowActionContract",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1096,6 +1127,11 @@
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "_tokenURI",
+        "type": "string"
+      },
+      {
         "internalType": "uint256",
         "name": "_pricePerToken",
         "type": "uint256"
@@ -1132,6 +1168,11 @@
       },
       {
         "internalType": "address",
+        "name": "_depositTokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
         "name": "_emitter",
         "type": "address"
       },
@@ -1141,9 +1182,14 @@
         "type": "address"
       },
       {
-        "internalType": "address",
-        "name": "_depositTokenAddress",
-        "type": "address"
+        "internalType": "bool",
+        "name": "_isGovernanceActive",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isTransferable",
+        "type": "bool"
       },
       {
         "internalType": "bool",
@@ -1628,24 +1674,6 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_nftAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_isNftTransferable",
-        "type": "bool"
-      }
-    ],
-    "name": "updateNftTransferability",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "_proxy",
         "type": "address"
       },
@@ -1674,6 +1702,24 @@
       }
     ],
     "name": "updatePricePerToken",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_nftAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_isTokenTransferable",
+        "type": "bool"
+      }
+    ],
+    "name": "updateTokenTransferability",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

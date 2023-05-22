@@ -8,6 +8,7 @@ type Station @entity {
   tokenType: String! #string
   imageUrl: String! #string
   isGtTransferable: Boolean! # bool
+  isGovernanceActive: Boolean!
 }
 
 type User @entity {

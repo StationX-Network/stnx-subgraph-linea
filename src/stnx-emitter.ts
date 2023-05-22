@@ -41,9 +41,10 @@ export function handleCreateDaoErc20(event: CreateDaoErc20Event): void {
   station.ownerAddress = event.params.deployerAddress
   station.name = event.params.name
   station.symbol = event.params.symbol
-  station.imageUrl = "PROFILE_PIC[i32(getRandomInt(0, 6))]"
+  station.imageUrl = ""
   station.tokenType = "erc20"
   station.isGtTransferable = event.params.isTransferable
+  station.isGovernanceActive = event.params.isGovernanceActive
   station.save()
 }
 
@@ -54,9 +55,10 @@ export function handleCreateDaoErc721(event: CreateDaoErc721Event): void {
   station.ownerAddress = event.params.deployerAddress
   station.name = event.params.name
   station.symbol = event.params.symbol
-  station.imageUrl = "PROFILE_PIC[i32(getRandomInt(0, 6))]"
+  station.imageUrl = event.params.tokenURI
   station.tokenType = "erc721"
-  station.isGtTransferable = false
+  station.isGtTransferable = event.params.isTransferable
+  station.isGovernanceActive = event.params.isGovernanceActive
   station.save()
 }
 
