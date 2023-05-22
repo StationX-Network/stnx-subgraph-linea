@@ -113,6 +113,15 @@ export class Station extends Entity {
   set isGtTransferable(value: boolean) {
     this.set("isGtTransferable", Value.fromBoolean(value));
   }
+
+  get isGovernanceActive(): boolean {
+    let value = this.get("isGovernanceActive");
+    return value!.toBoolean();
+  }
+
+  set isGovernanceActive(value: boolean) {
+    this.set("isGovernanceActive", Value.fromBoolean(value));
+  }
 }
 
 export class User extends Entity {
