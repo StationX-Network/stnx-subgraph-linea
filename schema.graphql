@@ -2,7 +2,6 @@ type Station @entity {
   id: ID!
   ownerAddress: Bytes! # address
   daoAddress: Bytes! # address
-  gnosisAddress: Bytes! #address
   name: String! # string
   symbol: String! # string
   tokenType: String! #string
@@ -20,5 +19,4 @@ type User @entity {
   depositAmount: BigInt! # uint256
   timeStamp: BigInt! # uint256
   gtAmount: BigInt! # uint256
-  isAdmin: Boolean! # bool
 }

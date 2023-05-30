@@ -157,20 +157,12 @@ export class CreateDaoErc20__Params {
     return this._event.parameters[13].value.toAddress();
   }
 
-  get gnosisAddress(): Address {
-    return this._event.parameters[14].value.toAddress();
-  }
-
   get isGovernanceActive(): boolean {
-    return this._event.parameters[15].value.toBoolean();
+    return this._event.parameters[14].value.toBoolean();
   }
 
   get isTransferable(): boolean {
-    return this._event.parameters[16].value.toBoolean();
-  }
-
-  get assetsStoredOnGnosis(): boolean {
-    return this._event.parameters[17].value.toBoolean();
+    return this._event.parameters[15].value.toBoolean();
   }
 }
 
@@ -243,20 +235,12 @@ export class CreateDaoErc721__Params {
     return this._event.parameters[13].value.toAddress();
   }
 
-  get gnosisAddress(): Address {
-    return this._event.parameters[14].value.toAddress();
-  }
-
   get isGovernanceActive(): boolean {
-    return this._event.parameters[15].value.toBoolean();
+    return this._event.parameters[14].value.toBoolean();
   }
 
   get isTransferable(): boolean {
-    return this._event.parameters[16].value.toBoolean();
-  }
-
-  get assetsStoredOnGnosis(): boolean {
-    return this._event.parameters[17].value.toBoolean();
+    return this._event.parameters[15].value.toBoolean();
   }
 }
 
@@ -475,10 +459,6 @@ export class NewUser__Params {
 
   get _gtToken(): BigInt {
     return this._event.parameters[5].value.toBigInt();
-  }
-
-  get _isAdmin(): boolean {
-    return this._event.parameters[6].value.toBoolean();
   }
 }
 
@@ -1234,20 +1214,12 @@ export class CreateDaoErc20Call__Inputs {
     return this._call.inputValues[13].value.toAddress();
   }
 
-  get _gnosisAddress(): Address {
-    return this._call.inputValues[14].value.toAddress();
-  }
-
   get _isGovernanceActive(): boolean {
-    return this._call.inputValues[15].value.toBoolean();
+    return this._call.inputValues[14].value.toBoolean();
   }
 
   get isTransferable(): boolean {
-    return this._call.inputValues[16].value.toBoolean();
-  }
-
-  get assetsStoredOnGnosis(): boolean {
-    return this._call.inputValues[17].value.toBoolean();
+    return this._call.inputValues[15].value.toBoolean();
   }
 }
 
@@ -1332,20 +1304,12 @@ export class CreateDaoErc721Call__Inputs {
     return this._call.inputValues[13].value.toAddress();
   }
 
-  get _gnosisAddress(): Address {
-    return this._call.inputValues[14].value.toAddress();
-  }
-
   get _isGovernanceActive(): boolean {
-    return this._call.inputValues[15].value.toBoolean();
+    return this._call.inputValues[14].value.toBoolean();
   }
 
   get isTransferable(): boolean {
-    return this._call.inputValues[16].value.toBoolean();
-  }
-
-  get assetsStoredOnGnosis(): boolean {
-    return this._call.inputValues[17].value.toBoolean();
+    return this._call.inputValues[15].value.toBoolean();
   }
 }
 
@@ -1644,10 +1608,6 @@ export class NewUserCall__Inputs {
 
   get _gtToken(): BigInt {
     return this._call.inputValues[5].value.toBigInt();
-  }
-
-  get _isAdmin(): boolean {
-    return this._call.inputValues[6].value.toBoolean();
   }
 }
 

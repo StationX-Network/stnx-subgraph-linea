@@ -1,4 +1,5 @@
 import { BigInt } from "@graphprotocol/graph-ts"
+
 import { Station, User } from "../generated/schema"
 import {
   CreateDaoErc20 as CreateDaoErc20Event,
@@ -20,7 +21,6 @@ export function handleNewUser(event: NewUserEvent): void {
     user.depositAmount = event.params._depositTokenAmount
     user.timeStamp = event.params._timeStamp
     user.gtAmount = event.params._gtToken
-    user.isAdmin = event.params._isAdmin
     user.daoName = fetchStationName(event.params._daoAddress.toHex())
     user.save()
   } else {
@@ -37,7 +37,6 @@ export function handleNewUser(event: NewUserEvent): void {
 export function handleCreateDaoErc20(event: CreateDaoErc20Event): void {
   let station = new Station(event.params.proxy.toHex())
   station.daoAddress = event.params.proxy
-  station.gnosisAddress = event.params.gnosisAddress
   station.ownerAddress = event.params.deployerAddress
   station.name = event.params.name
   station.symbol = event.params.symbol
@@ -51,7 +50,6 @@ export function handleCreateDaoErc20(event: CreateDaoErc20Event): void {
 export function handleCreateDaoErc721(event: CreateDaoErc721Event): void {
   let station = new Station(event.params.proxy.toHex())
   station.daoAddress = event.params.proxy
-  station.gnosisAddress = event.params.gnosisAddress
   station.ownerAddress = event.params.deployerAddress
   station.name = event.params.name
   station.symbol = event.params.symbol
